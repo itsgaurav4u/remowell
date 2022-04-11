@@ -1,12 +1,55 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import {
+  SafeAreaView,
+  StyleSheet,
+  ScrollView,
+  View,
+  Text,
+} from 'react-native';
+
+import {
+  Header,
+  LearnMoreLinks,
+  Colors,
+  DebugInstructions,
+  ReloadInstructions,
+} from 'react-native/Libraries/NewAppScreen';
+import HomeScreen from "./src/pages/homeScreen"
+import IndusturyFitScreen from "./src/pages/industyFitScreen"
+import AboutScreen from "./src/pages/aboutScreen"
+import FitnessScreen from "./src/pages/fitnessScreen"
+import {NavigationContainer} from '@react-navigation/native'
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import {HomeScreeNavigator} from "./src/customizeNavigation"
+const Tab = createBottomTabNavigator()
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <>
+    <NavigationContainer>
+      <Tab.Navigator
+        screenOptions={{
+          labelStyle:{fontSize:18},
+          activeTintColor: 'red'
+        }}
+      >
+        <Tab.Screen
+          name="Fitness"
+          component={HomeScreeNavigator}
+        />
+        <Tab.Screen
+          name="Social"
+          component={IndusturyFitScreen}
+        />
+        <Tab.Screen
+          name="Me"
+          component={AboutScreen}
+        />
+      </Tab.Navigator>
+
+    </NavigationContainer>
+  </>
   );
 }
 
